@@ -10,14 +10,14 @@ export default function Footer(){
                 <div className='footer-container'>
                     <div className='logo-footer'>
                         <Image src={'/Header/Ilumalogo2.svg'} alt='ilumastorelogo' width={90} height={90} />
-                        <h3>IlumaStore</h3>
+                        
                     </div>
                     <div className='menu-footer'>
                         <div className='links'>
                             <Link href={'/products'}>Каталог</Link>
                             <Link href={'/contacts'}>Контакты</Link>
                             <Link href={'/sales'}>Акции</Link>
-                            <Link href='/#popular'>Популярное</Link>
+                            <Link href={"/policy"}>Политика конфиденциальности</Link>
                         </div>
                         <div className='adress'>
                             <p>г.Москва - ул. Римского-Корсакова, 11, корп 8 <br></br> Ориентир: Пункт OZON</p>
@@ -29,7 +29,7 @@ export default function Footer(){
                     <div className='contacts-footer'>
                         <div className='footer-tel'>
                             <a href='tel:+7 (995) 153-80-19'>+7 (995) 153-80-19</a>
-                            <p>С 10:00 до 23:00, без выходных</p>
+                             <p>Пн-пт: с 10:00 до 23:00<br/>Сб-вс: с 12.00-21.00</p>
                         </div>
                         <div className='links-contacts'>
                             <a href='https://t.me/+tXZ1x8yraKUzNWEy'>

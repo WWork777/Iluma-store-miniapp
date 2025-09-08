@@ -4,6 +4,7 @@ import { useContext, useRef, useState, useMemo } from "react";
 import { CartContext } from "@/cart/add/cart";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import Link from "next/link";
 
 const CheckoutPage = () => {
   const [selectedMethod, setSelectedMethod] = useState("pickup");
@@ -24,6 +25,7 @@ const CheckoutPage = () => {
     phoneNumber: "",
     city: "",
     streetAddress: "",
+    privacyConsent: false,
   });
 
   const totalQuantity = cartItems
@@ -61,6 +63,11 @@ const CheckoutPage = () => {
       }
     }
 
+    if (!formData.privacyConsent) {
+      newErrors.privacyConsent =
+        "Требуется согласие на обработку персональных данных";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -82,6 +89,20 @@ const CheckoutPage = () => {
       }));
     }
   };
+
+  const handleConsentChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      privacyConsent: e.target.checked,
+    }));
+    if (errors.privacyConsent) {
+      setErrors((prev) => ({
+        ...prev,
+        privacyConsent: "",
+      }));
+    }
+  };
+
   const handlePhoneChange = (value) => {
     setFormData((prev) => ({
       ...prev,
@@ -110,7 +131,6 @@ const CheckoutPage = () => {
         "московский",
         "щербинка",
         "новая москва",
-        "домодедово",
         "теплый стан",
         "коммунарка",
         "сосенки",
@@ -119,6 +139,7 @@ const CheckoutPage = () => {
         "солнцево",
         "фили",
         "новокосино",
+        "домодедово",
         "беляево",
         "ясенево",
         "царицыно",
@@ -676,7 +697,7 @@ ${formattedCart}
   return (
     <div className="checkout-page">
       <div className="checkout-form">
-        <h1 style={{ color: "white" }}>Оформление заказа</h1>
+        <h1>Оформление заказа</h1>
         <form onSubmit={handleSubmit} ref={formRef}>
           <div className="checkout-name">
             <h4>Контактные данные</h4>
@@ -777,10 +798,9 @@ ${formattedCart}
                 <p>
                   Забирать заказ по адресу:
                   <br />
-                  г.Москва - ул. Римского-Корсакова, 11, корп 8 <br></br>{" "}
-                  Ориентир: Пункт OZON
+                  г.Москва - ул. Римского-Корсакова, 11, корп 8 Ориентир: Пункт
+                  "OZON" (САМОВЫВОЗ ОСУЩЕСТВЛЯЕТСЯ ПО СОГЛАСОВАНИЮ)
                 </p>
-                <p>(САМОВЫВОЗ ОСУЩЕСТВЛЯЕТСЯ ПО СОГЛАСОВАНИЮ)</p>
               </div>
             )}
           </div>
@@ -816,8 +836,41 @@ ${formattedCart}
               <p>Итого:</p>
               <p>{calculateTotalPrice()} ₽</p>
             </div>
+            <div className="checkout-privacy">
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  marginBottom: "15px",
+                  fontSize: "14px",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={formData.privacyConsent}
+                  onChange={handleConsentChange}
+                  style={{ width: "auto" }}
+                />
+
+                <Link
+                  href="/policy"
+                  style={{ color: "grey", textDecoration: "underline" }}
+                >
+                  Даю согласие на обработку своих персональных данных
+                </Link>
+              </label>
+              {errors.privacyConsent && (
+                <p
+                  className="error"
+                  style={{ color: "red", fontSize: "12px", marginTop: "4px" }}
+                >
+                  {errors.privacyConsent}
+                </p>
+              )}
+            </div>
             <button onClick={handleExternalSubmit} disabled={loading}>
-              {loading ? "Загрузка..." : "Оформить заказ"}
+              {loading ? "Загрузка..." : "Заказать"}
             </button>
           </div>
         ) : (
