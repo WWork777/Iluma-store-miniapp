@@ -6,7 +6,10 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import Link from "next/link";
 
+
+
 const CheckoutPage = () => {
+  
   const [selectedMethod, setSelectedMethod] = useState("pickup");
   const [loading, setLoading] = useState(false);
   const {
@@ -122,7 +125,7 @@ const CheckoutPage = () => {
 
     if (validateForm()) {
       const totalPrice = calculateTotalPrice();
-      const site = "iluma-store.ru";
+      const site = "Telegram MiniApp";
 
       const moscowCities = [
         "москва",

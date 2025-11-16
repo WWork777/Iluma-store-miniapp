@@ -13,7 +13,7 @@
   flex-direction: column;
   h1 {
     font-weight: 600;
-    padding: 0 3%;
+    padding: 0 15%;
     color: white;
   }
   h2 {
@@ -110,11 +110,30 @@
     }
   }
 }
+@media screen and (max-width: 1785px) {
+  .products-catalog-container {
+    h1 {
+      padding: 0 10%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1570px) {
+  .products-catalog-container {
+    h1 {
+      padding: 0 5%;
+      margin-bottom: 0;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   .products-catalog-container {
     padding: 100px 0;
     h1 {
       margin-bottom: 0;
+      padding: 0 3%;
     }
   }
 }
