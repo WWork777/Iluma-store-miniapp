@@ -63,11 +63,10 @@ export default function Header(){
                     </div>
                 </Link>
                 <div className='menu'>
+                    <Link href='/products'>Каталог</Link>
                     <Link href='/products/iqos'>Устройства</Link>
                     <Link href='/products/terea'>Стики</Link>
                     <Link href='/products/devices'>Аксессуары</Link>
-                    <Link href='/products'>Каталог</Link>
-                    <Link href='/contacts'>Контакты</Link>
                 </div>
                 <div className='cart-menu'>
                     <button className="basket btn-primary position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart" aria-controls="offcanvasRight">
@@ -119,11 +118,10 @@ export default function Header(){
                                 <span>IlumaStore</span>
                             </div>
                         </div>
+                        <Link className='link-close' href='/contacts'  onClick={(e) => handleLinkClick(e, '/')}>Каталог</Link>
                         <Link className='link-close' href='/'  onClick={(e) => handleLinkClick(e, '/products/iqos')}>Устройства</Link>
                         <Link className='link-close' href='/portfolio'  onClick={(e) => handleLinkClick(e, '/products/terea')}>Стики</Link>
                         <Link className='link-close' href='/services'  onClick={(e) => handleLinkClick(e, '/products/devices')}>Аксессуары</Link>
-                        <Link className='link-close' href='/contacts'  onClick={(e) => handleLinkClick(e, '/products')}>Каталог</Link>
-                        <Link className='link-close' href='/contacts'  onClick={(e) => handleLinkClick(e, '/contacts')}>Контакты</Link>
                         <div className='footer-contacts'>
                  
                         <div className='contacts-container'>
